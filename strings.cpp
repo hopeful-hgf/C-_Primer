@@ -35,7 +35,7 @@ int main(int argc,char *argv[])
 		printf("usage: strings filename");
 	else {
 		for (i = 1;i < argc; i++) {
-			if ((fin = fopen(argv[i], "rb")) == NULL)
+			if ((fin = fopen (argv[i], "rb")) == NULL)
 				printf("can't open %s:", argv[i]);
 			else {
 				strings(argv[i],fin);
