@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	printf ("char %d, short %d, int %d, long %d, float %d, double %d, void* %llu",sizeof(char),sizeof(short),sizeof(int),sizeof(float),sizeof(double),sizeof(void *));
+	printf ("char %d, short %d, int %d, long %d, float %d, double %d, void* %llu .",sizeof(char),sizeof(short),sizeof(int),sizeof(float),sizeof(double),sizeof(void*));
 	return 0;
 }
 /* 在windows764bit 上，分别用gcc和clang编译，
