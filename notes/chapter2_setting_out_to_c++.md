@@ -48,6 +48,17 @@ when you run a C++ program, execution always begins at the beginning of *main()*
 
 ## How and when to use *endl*
 
+```C++
+cout << "\n";
+cout << endl;
+```
+
+- **\n**  is a newline character, means start a new line.  used as an embedded character.(嵌入式)
+- **endl**  is a manipulator, to start a new line in the iostream.
+- One difference is that *endl* guarantees the output will be flushed before the program moves on, but the "\n" dosen't.
+
+
+
 ## Declaring and using variables
 
 ## Using the *cin* object for input
