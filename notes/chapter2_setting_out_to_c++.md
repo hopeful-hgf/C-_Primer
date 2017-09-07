@@ -29,14 +29,35 @@ int main()						// function header
 
 ## The *#include* directive
 
-Header file naming conventions:
+- Header file naming conventions:
 
-| Kind of header |         Convention          |  Example   |                 comments                 |
-| :------------: | :-------------------------: | :--------: | :--------------------------------------: |
-|  C old style   |             *.h             |   math.h   |       usable by C and C++ programs       |
-| C++ old style  |             *.h             | iostream.h |          usable by C++ programs          |
-| C++ new style  |        No extension         |  iostream  | usable by C++ programs, use namespace std |
-|  Converted C   | c prefix, no extension (c*) |   cmath    | usable by C++ programs, might use non-C features, |
+  | Kind of header |         Convention          |  Example   |                 comments                 |
+  | :------------: | :-------------------------: | :--------: | :--------------------------------------: |
+  |  C old style   |             *.h             |   math.h   |       usable by C and C++ programs       |
+  | C++ old style  |             *.h             | iostream.h |          usable by C++ programs          |
+  | C++ new style  |        No extension         |  iostream  | usable by C++ programs, use namespace std |
+  |  Converted C   | c prefix, no extension (c*) |   cmath    | usable by C++ programs, might use non-C features, |
+
+- place functions prototype ahead of where you first use the function, so we could take *include* before *main()*
+
+- ```C++
+  using namespace std;	// above the function definitions
+  ```
+
+  ```c++
+  using namespace std; 	// in a specific function definition
+  ```
+
+  ```C++
+  using std::cout;	//in a specific fuction definition make a paricular element available to the function
+  ```
+
+  ```C++
+  std::cout<< "example " 	//use the std:: prefix whenever you use elements from the std namespace
+  ```
+
+  ​
+
 
 ## The *main()* function
 
