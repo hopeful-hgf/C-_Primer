@@ -46,3 +46,37 @@
 - *iostream* manipulator to display numbers in octal or hexadecimal
 
   Like *iostream* header file provides the *endl* manipulator to give *cout* the message to start a new line, it provides *dec*, *hex*, and *oct* manipulator to give *cout* the message to dispaly integers in decimal, hexadecimal, and octal formats.
+
+- Special suffix to indicate a particular type of integer 
+  - *l* or *L* for long
+  - *u* or *U* for unsigned
+  - *ul* or any cobination of orders and uppercase and lowercase, indicates unsigned long constant
+  - *ll* for long long and *ull* for unsigned long long
+  - a hexadecimal literal constant like 0x4C50 will saved as an unsigned int, for hexadecimal is frequently used to express memory addreses, which intrinsically are unsigned.
+
+- Escape sequence codes
+  | Character Name  | ASCII Symbol | C++ code |
+  | :-------------: | :----------: | :------: |
+  |     Newline     |    NL(LF)    |    \n    |
+  | Horizontal tab  |      HT      |    \t    |
+  |  Vertical tab   |      VT      |    \v    |
+  |    Backspace    |      BS      |    \b    |
+  | Carriage return |      CR      |    \r    |
+  |      Alert      |     BEL      |    \a    |
+  |    Backslash    |      \       |    \\    |
+  |  Question mark  |      ?       |    \?    |
+  |  Single quote   |      '       |    \'    |
+  |  Double quote   |      "       |    \"    |
+
+- Universal Caracter  Name
+
+  - *\u* followed by 8 hexadecimal digits. The digits represent the ISO 10646 code point for the character.
+  - *\U* followed by 16 hexadecimal digits.
+
+- **wchar_t** is a 16-bit type, can represent the largest extended character set used on system.
+
+  The *cin* and *cout* family cosider input and output as consisiting of streams of *chars*, so they are not suitable for handling the *wchar_t* type. The *iostream* header provides parallel facilities in the form of *wcin* and *cout* for handling *wchar_t* streams.
+
+  We can indicate a wide-character constant or string by receding it with an *L*.
+
+  ​
