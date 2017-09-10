@@ -79,4 +79,24 @@
 
   We can indicate a wide-character constant or string by receding it with an *L*.
 
+  **New C++11 Type:** *char16* & *char32* 
+
   ​
+
+- force output to stay in fixed-point notation
+
+  ```C++
+  std::cout.setf(ios_base::fixed, ios_base::floatfield);	//fixed-point
+  ```
+
+- Floalting-point constants
+  By default, floating-point constants such as *8.34* and *2.4E8* are type *double*. If you want to a constant to be type *float*, you use a *f* or *F* suffix. For type *long double*, you use an *l* or *L* suffix.
+
+- Classifying Data Types
+
+  - integer
+    - signed integer: signed char, short, int, long, long long
+    - unsigned integer:
+    - bool, char, wchar_t
+  - floating-point
+    - float, double, long double​
