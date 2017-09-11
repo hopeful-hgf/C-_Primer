@@ -81,7 +81,9 @@
 
   **New C++11 Type:** *char16* & *char32* 
 
-  ​
+- Float point type limits 
+
+  we can look in the *cfloat*  or *float.h* header files.
 
 - force output to stay in fixed-point notation
 
@@ -99,4 +101,56 @@
     - unsigned integer:
     - bool, char, wchar_t
   - floating-point
-    - float, double, long double​
+    - float, double, long double
+
+- initializtion conversions when {} are used (C++11)
+
+  a *list-initialization* is an initialization uses braces, this form can be used more generally to provide lists of values for more complicated data types. In particular, list-initializatin doesn't permit narrowing, which is when the type of the variable may not be able to represent the assigned value. For example, conversions of floating types to integer types are not allowed. Converting from integer types to other integer types or floating types may be allowed if the compiler can tell if the target variable can hold the value correctly.
+
+  ```C++
+  const int code = 66;
+  int x = 66;
+  char c1 { 23231};	// narrowing, not allowed
+  char c2 = {66};		// allowed because char can hold 66
+  char c3 {code};		// ditto
+  char c4 = {x};		// not allowed, x is not a constant
+  x = 23231;
+  char c5 = x;		// allowed by this form of initialization
+  ```
+
+- Type casts
+
+  ```C++
+  (typeName) value 	// converts value to typeName type
+  typeName (value)	// converts value to typeName type 
+  ```
+
+  The first form is straight C. the second is pure C++. Both form type cast donot alter the  value variable itself, it creates a new value of the indicated type.
+
+  **static_cast<typeName>** operator can be used for converting vales form one numeric type to another.
+
+  ```C++
+  static_cast<typeName> (value);	// converts value to typeName type 
+  ```
+
+- Auto Decalarations in C++11
+
+  C++11 introduces a facility that allows the compiler to deduce a type from type of an initializaion value.
+
+  Automatic type deduction becomes much more useful when dealing with compliated types, such as those in STL. For example, C++98 might have this:
+
+  ```C++
+  std::vector<double> scores;
+  std::vector<double>::iterator pv = scores.begin();
+  ```
+
+  C++11 allows you to write this instead:
+
+  ```C++
+  std::vector<double> scores;
+  auto pv = scores.begin();
+  ```
+
+  ​
+
+  ​
