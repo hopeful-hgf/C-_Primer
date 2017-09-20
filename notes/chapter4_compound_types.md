@@ -121,4 +121,123 @@
 
     The range of enum, the upper lmit is up to the smallest power of two greater than the largest value of the enumeration. and the lower limit : if the smallest enumerator is 0 or greater, it's 0; if the smallest enumerator is negative, use the same approach as for finding the upper limit but toss in a minus sign.
 
-- ​
+- **address operator**  *&*  、**dereferencing operator** *\**
+
+  - You need an * for each pointer variable name
+
+    ```C++
+    int * p1, p2;
+    ```
+
+    That declaration creates one pointer p1, and ordinary int p2.
+
+    - Pointer are based on other types, like arrays. It always point to a specific type. `double * pb` pb is type pointer-to-double, `char * pc` is type point-to-char.
+
+    - You can use a declaration statement to initialize a pointer, in that case, the pointer, not the pointed-to value, is initialized.
+
+      ```C++
+      int higgens = 9;
+      int * pt = &higgens;
+      ```
+
+      The statements set pt and not *pt the value &higens.
+
+    - We can't simply assign an integer to a pointer. If you want to use a numeric value asan address, you should use a type cast to vonvert the number to  the appropriate address type.
+
+      ```C++
+      int * pt;
+      pt = 0xB7235678;			// We cannot do this, -- type mismatch
+      pt = (int *) 0xB7235678;	// we can do like this ,-- types now match
+      ```
+
+    - We should allways balance a use of *new* with a use of *delete*, We should not  attempt to free a block of memory tha we have previously freed, also  we cannot use *delete* to free memory created by declaring ordinary variables.
+
+      ```C++
+      int * pt = new int; 		// ok
+      delete pt;					// ok
+      delete pt;					// not ok now
+      int jugs = 5;
+      int * pi = &jugs;
+      delete pi;					// not allowed, memory not allocated by new
+      ```
+
+    - Creating a Dynamic Array with *new*
+
+      ```C++
+      int * pia = new int [10];		// get a block of 10 ints
+      delete [] pia;					// free a dynamic array
+      ```
+
+      It's your responsibility to keep tack of how many elements are in the block.
+
+    - you can't change the value of an array name, but a pointer is a variable, hence you can change its value.
+
+      ```C++
+      #include <iostream>
+      int main()
+      {
+        using namespace std;
+        double * pd = new double [3];
+        pd[0] = 0.4;
+        pd[1] = 0.5;
+        pd[2] = 0.6;
+        
+        cout << "pd[1] is "<< pd[1] <<".\n";
+        pd = pd+1;
+        cout<< "Now pd[1] is "<< pd[1] <<".\n";
+        pd = pd -1;
+        delete [] pd;
+        return 0;
+      }
+      ```
+
+    - In genreal, wherever you use array `arrayname[i]` becomes `* (arrayname + i)`
+
+    - Applying the *sizeof* operator to an array name yields the size of the array, but applying *sizeof* to a pointer yields the size of the pointer, even if the pointer points to an array.
+
+    - The name of the array is interpreted as the address of the first element of the array , whereas applying the address operator yields the address of the whole array.
+
+      ```C++
+      short tell[10];
+      cout <<tell << endl;		// display &tell[0]
+      cout << &tell << endl; 		// display address of whole array
+      ```
+
+      *tell* is type pointer to a *short*, or a *short \**, and *&tell* is type pointer to an array of 20 shorts, or *(\*)[20]* . *tell +1* and 2 to rhe address value, whereas *&tell +1* add 20 to the address value.
+
+    - ```C++
+      short (*pas) [20] = &tell;		// pas points to array of 20 shorts
+      short * pas [20];				// pas is an array of 20 points-to-short
+      ```
+
+    - `const char * brid = "wren";` string literals are constants, which is why the code use the *const* keyword in the declaration. Using *const* in this fashion means you can use *brid* to access the string but not to change it.
+
+    - Normally, if you give cout a pointer, itprints an address. But if the pointer is type *char \**, cout displays the pointed-to string. If you want to see the address of the string, you have to type cast the pointer to another pointer type,shach as *int \**.
+
+    - The *vector* Template class
+
+      ```C++
+      #include <vector>
+      using namespace std;
+      vector<int> vi;				// Create a zero-size array of int
+      int n;
+      cin>>n;
+      vector<double> vd(n);		// create an array of n doubles
+      ```
+
+    - The *array* Template Class
+
+      C++11 add the array template class, which is part of the std namespace. Like the built-in type, an array object has a fixed size and uses the stack(or else static memory allocation) instead of  the free store, so it shares the efficiency of built-in array.
+      ```C++
+      #include <array>
+      using namespace std;
+      array<int,5> ai;				// Create an array of 5 ints
+      array<double,4> ad = {1.2, 2.3, 3.4, 4.5};		// create an array of 4 doubles
+      ```
+      `array<typeName, n_elem> arr;` this declaration dreates an array object arr with n_elem elements of typeName. The n_elem can't be a variable.
+
+    - Comparing Arrays, *vector* Object, and *array* objects
+
+      1. whether we use a built-in array, a vector object, or an array object, we can use the standard array notation to access individual members.
+      2. array objects use the same region of memory as the built-in array, whereas the vector object is stored in a different region.
+      3. you can assign an array object to another array object. for built-in arrays, you have to copy the data element-by-element.
