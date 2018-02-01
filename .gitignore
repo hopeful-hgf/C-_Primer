@@ -33,3 +33,7 @@
 # Backup files
 *.bak
 *~
+
+# vscode
+**/.vscode/**
+
